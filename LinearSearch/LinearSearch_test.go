@@ -1,21 +1,25 @@
-package main
+package linearsearch
 
 import "testing"
 
-var numArray = []int{3, 17, 21, 1, 45, 13}
+func TestLinearSearch(t *testing.T) {
+	var numArray = []int{3, 17, 21, 1, 45, 13}
+	t.Parallel()
+	t.Run("Found number", func(t *testing.T) {
+		var index = linearSearch(numArray, 21)
 
-func TestNumberFound(t *testing.T) {
-	var index = linearSearch(numArray, 21)
+		if index != 2 {
+			t.Errorf("Expected %d", 2)
+			t.Errorf("Received %d", index)
+		}
+	})
 
-	if index == 2 {
-		t.Errorf("Got %d, want %d", index, 2);
-	}
-}
+	t.Run("Number not found", func(t *testing.T) {
+		var index = linearSearch(numArray, 55)
 
-func TestNumberNotFound(t *testing.T) {
-	var index = linearSearch(numArray, 55)
-
-	if index != -1 {
-		t.Errorf("Got %d, want %d", index, -1)
-	}
+		if index != -1 {
+			t.Errorf("Expected %d", -1)
+			t.Errorf("Received %d", index)
+		}
+	})
 }
