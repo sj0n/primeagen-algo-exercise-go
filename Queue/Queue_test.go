@@ -10,7 +10,8 @@ func TestQueue(t *testing.T) {
 		queue.Enqueue(3)
 
 		if queue.Length != 3 {
-			t.Errorf("Expected %d, Received %d", 3, queue.Length)
+			t.Errorf("Expected %d", 3)
+			t.Errorf("Received %d", queue.Length)
 		}
 	})
 
@@ -19,13 +20,15 @@ func TestQueue(t *testing.T) {
 		queue.Dequeue()
 		t.Run("Queue length reduce by 1", func(t *testing.T) {
 			if queue.Length != 2 {
-				t.Errorf("Expected %d, Received %d", 2, queue.Length)
+				t.Errorf("Expected %d", 2)
+				t.Errorf("Received %d", queue.Length)
 			}
 		})
 
 		t.Run("Peek() Value of head updates", func(t *testing.T) {
 			if queue.Peek() != 2 {
-				t.Errorf("Expected %d, Received %d", 2, queue.Peek())
+				t.Errorf("Expected %d", 2)
+				t.Errorf("Received %d", queue.Peek())
 			}
 		})
 
@@ -35,7 +38,8 @@ func TestQueue(t *testing.T) {
 			_, error := queue.Dequeue()
 
 			if error == nil {
-				t.Errorf("Expected %v, Received %v", "Queue is empty", error)
+				t.Errorf("Expected %v", "Queue is empty")
+				t.Errorf("Received %v", error)
 			}
 		})
 	})
