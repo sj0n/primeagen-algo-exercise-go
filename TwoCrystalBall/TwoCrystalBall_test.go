@@ -6,29 +6,32 @@ import (
 	"testing"
 )
 
-func TestFloorLimit(t *testing.T) {
-	index := int(math.Floor(rand.Float64() * 10000))
+func TestTwoCrystallBall(t *testing.T) {
 	floors := [10000]bool{}
-	
-	for i := index; i < len(floors); i++ {
-		floors[i] = true
-	}
+	t.Parallel()
+	t.Run("Floor limit", func(t *testing.T) {
+		index := int(math.Floor(rand.Float64() * 10000))
 
-	floor_limit := TwoCrystalBall(floors[:]);
+		for i := index; i < len(floors); i++ {
+			floors[i] = true
+		}
 
-	if floor_limit != index {
-		t.Errorf("Expected %d", index)
-		t.Errorf("Received %d", floor_limit)
-	}
-}
+		floor_limit := TwoCrystalBall(floors[:])
 
-func TestNoFloorLimit(t *testing.T) {
-	floors := [10000]bool{}
+		if floor_limit != index {
+			t.Errorf("Expected %d", index)
+			t.Errorf("Received %d", floor_limit)
+		}
+	})
 
-	floor_limit := TwoCrystalBall(floors[:])
+	t.Run("No floor limit", func(t *testing.T) {
+		floors = [10000]bool{}
 
-	if floor_limit != -1 {
-		t.Errorf("Expected %d", -1)
-		t.Errorf("Received %d", floor_limit)
-	}
+		floor_limit := TwoCrystalBall(floors[:])
+
+		if floor_limit != -1 {
+			t.Errorf("Expected %d", -1)
+			t.Errorf("Received %d", floor_limit)
+		}
+	})
 }
