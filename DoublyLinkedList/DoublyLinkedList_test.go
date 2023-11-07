@@ -30,7 +30,7 @@ func TestDoublyLinkedList(t *testing.T) {
 		})
 	})
 
-	t.Run("Get() element at index 1", func(t *testing.T) {
+	t.Run("GetAt() element at index 1", func(t *testing.T) {
 		if node, _ := list.GetAt(1); node.Value != 2 {
 			t.Errorf("Expected %d", 2)
 			t.Errorf("Received %d", node.Value)
@@ -39,11 +39,11 @@ func TestDoublyLinkedList(t *testing.T) {
 
 	t.Run("RemoveAt()", func(t *testing.T) {
 		t.Run("Remove 0 index element returns the element", func(t *testing.T) {
-			value, _ := list.RemoveAt(0)
+			node, _ := list.RemoveAt(0)
 
-			if value != 1 {
+			if node.Value != 1 {
 				t.Errorf("Expected %d", 1)
-				t.Errorf("Received %d", value)
+				t.Errorf("Received %d", node.Value)
 			}
 		})
 

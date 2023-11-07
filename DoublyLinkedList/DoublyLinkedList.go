@@ -92,7 +92,7 @@ func (dll *DoublyLinkedList[T]) InsertAt(value T, index int) interface{} {
 	return nil
 }
 
-func (dll *DoublyLinkedList[T]) RemoveAt(index int) (interface{}, interface{}) {
+func (dll *DoublyLinkedList[T]) RemoveAt(index int) (*Node[T], interface{}) {
 	if index < 0 || index > dll.Length {
 		return nil, errors.New("index is out of bound")
 	}
@@ -110,7 +110,7 @@ func (dll *DoublyLinkedList[T]) RemoveAt(index int) (interface{}, interface{}) {
 		dll.Head = nil
 		dll.Tail = nil
 
-		return node.Value, nil
+		return node, nil
 	}
 
 	if node.Prev != nil && node.Next != nil {
@@ -126,5 +126,5 @@ func (dll *DoublyLinkedList[T]) RemoveAt(index int) (interface{}, interface{}) {
 		dll.Tail = node.Prev
 	}
 
-	return node.Value, nil
+	return node, nil
 }
