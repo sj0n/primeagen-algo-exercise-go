@@ -48,7 +48,7 @@ func (dll *DoublyLinkedList[T]) Append(value T) {
 	dll.Tail = node
 }
 
-func (dll *DoublyLinkedList[T]) GetAt(index int) (*Node[T], interface{}) {
+func (dll *DoublyLinkedList[T]) GetAt(index int) (*Node[T], error) {
 	currentNode := dll.Head
 
 	if currentNode == nil {
@@ -62,7 +62,7 @@ func (dll *DoublyLinkedList[T]) GetAt(index int) (*Node[T], interface{}) {
 	return currentNode, nil
 }
 
-func (dll *DoublyLinkedList[T]) InsertAt(value T, index int) interface{} {
+func (dll *DoublyLinkedList[T]) InsertAt(value T, index int) error {
 	if index < 0 || index > dll.Length {
 		return errors.New("index is out of bound")
 	}
@@ -92,7 +92,7 @@ func (dll *DoublyLinkedList[T]) InsertAt(value T, index int) interface{} {
 	return nil
 }
 
-func (dll *DoublyLinkedList[T]) RemoveAt(index int) (*Node[T], interface{}) {
+func (dll *DoublyLinkedList[T]) RemoveAt(index int) (*Node[T], error) {
 	if index < 0 || index > dll.Length {
 		return nil, errors.New("index is out of bound")
 	}
