@@ -30,7 +30,7 @@ func (q *Queue[T]) Enqueue(value T) {
 	}
 }
 
-func (q *Queue[T]) Dequeue() (interface{}, error) {
+func (q *Queue[T]) Dequeue() (any, error) {
 	if q.IsEmpty() {
 		return nil, errors.New("Queue is empty")
 	}
