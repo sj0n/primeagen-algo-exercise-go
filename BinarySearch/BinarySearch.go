@@ -3,7 +3,7 @@ package main
 func BinarySearch(array []int, number int) int {
 	start := 0
 	end := len(array)
-	
+
 	for start < end {
 		midIndex := (start + end) / 2
 
