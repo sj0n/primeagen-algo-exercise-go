@@ -6,7 +6,7 @@ type BinaryNode[T any] struct {
 	value T
 }
 
-func InOrderSearch(head *BinaryNode[int]) []int {
+func InOrderTraverse(head *BinaryNode[int]) []int {
 	return walk(head, &[]int{})
 }
 

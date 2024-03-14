@@ -35,7 +35,7 @@ func TestBTPreOrder(t *testing.T) {
 		},
 	}
 
-	treeSlice := PreOrderSearch(tree)
+	treeSlice := PreOrderTraverse(tree)
 	result := reflect.DeepEqual(treeSlice, []int{20, 10, 5, 7, 15, 50, 30, 29, 45, 100})
 
 	if !result {

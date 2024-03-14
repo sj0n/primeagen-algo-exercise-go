@@ -35,7 +35,7 @@ func TestBTInOrder(t *testing.T) {
 		},
 	}
 
-	treeSlice := InOrderSearch(tree)
+	treeSlice := InOrderTraverse(tree)
 	result := reflect.DeepEqual(treeSlice, []int{5, 7, 10, 15, 20, 29, 30, 45, 50, 100})
 
 	if !result {
